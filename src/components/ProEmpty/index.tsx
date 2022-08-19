@@ -1,8 +1,10 @@
+import React, { CSSProperties } from 'react'
+
 import { Button } from 'antd'
 import classNames from 'classnames'
-import React, { CSSProperties } from 'react'
-import { ReactComponent as EmptySvg } from './img/empty.svg'
 import styles from './index.module.less'
+
+// import { ReactComponent as EmptySvg } from './img/empty.svg'
 
 type ComponentProps = {
 	description?: React.ReactNode
@@ -41,7 +43,7 @@ const ProEmpty: React.FC<ComponentProps> = props => {
 
 			{contentRender && contentRender}
 
-			<EmptySvg style={{ width: 220, height: 130 }} />
+			{/* <EmptySvg style={{ width: 220, height: 130 }} /> */}
 		</div>
 	)
 }

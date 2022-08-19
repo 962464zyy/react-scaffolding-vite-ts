@@ -1,10 +1,13 @@
+import 'antd/dist/antd.css'
+
+import { Outlet, Route, useRoutes } from 'react-router-dom'
 import { Suspense, useLayoutEffect } from 'react'
 
-import { BrowserRouter } from 'react-router-dom'
 import { ConfigProvider } from 'antd'
 import PageLoading from './components/Loading'
 import ProEmpty from './components/ProEmpty'
 import { getEnv } from './utils'
+import routes from './routes'
 import zh_CN from 'antd/lib/locale/zh_CN'
 
 const App = () => {
@@ -18,6 +21,10 @@ const App = () => {
 			window.global = window
 		}
 	}, [])
+
+	const Routes = useRoutes(routes)
+	return Routes
+
 	return (
 		// antd 全局化配置
 		<ConfigProvider
@@ -30,17 +37,16 @@ const App = () => {
 			// 自定义组件空状态
 			renderEmpty={() => <ProEmpty size="large" />}
 		>
-			<BrowserRouter basename="zyy">
-				{/* 配置加载页面 */}
-				<Suspense fallback={<PageLoading />}>
-					{/* 配置路由 */}
-					{/* <GlobalProvider routes={routes}>
-						<AccessProvider routes={routes}>
-							<CreateRoutes />
-						</AccessProvider>
-					</GlobalProvider> */}
-				</Suspense>
-			</BrowserRouter>
+			{Routes}
+			{/* <Routes>
+				<Route path="/">
+					<Route path="home1/*">
+						<Route path="home4" element={<>home4</>}></Route>
+					</Route>
+					<Route path="home2" element={<>home2</>}></Route>
+					<Route path="home3" element={<>home3</>}></Route>
+				</Route>
+			</Routes> */}
 		</ConfigProvider>
 	)
 }
