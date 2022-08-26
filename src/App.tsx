@@ -3,7 +3,10 @@ import 'antd/dist/antd.css'
 import { Outlet, Route, useRoutes } from 'react-router-dom'
 import { Suspense, useLayoutEffect } from 'react'
 
+import AccessProvider from './pro/access/AccessProvider'
 import { ConfigProvider } from 'antd'
+import CreateRoutes from './pro/createRoutes'
+import GlobalProvider from './pro/global/GlobalProvider'
 import PageLoading from './components/Loading'
 import ProEmpty from './components/ProEmpty'
 import { getEnv } from './utils'
@@ -23,7 +26,6 @@ const App = () => {
 	}, [])
 
 	const Routes = useRoutes(routes)
-	return Routes
 
 	return (
 		// antd 全局化配置
@@ -37,16 +39,12 @@ const App = () => {
 			// 自定义组件空状态
 			renderEmpty={() => <ProEmpty size="large" />}
 		>
-			{Routes}
-			{/* <Routes>
-				<Route path="/">
-					<Route path="home1/*">
-						<Route path="home4" element={<>home4</>}></Route>
-					</Route>
-					<Route path="home2" element={<>home2</>}></Route>
-					<Route path="home3" element={<>home3</>}></Route>
-				</Route>
-			</Routes> */}
+			<GlobalProvider routes={routes}>
+				<AccessProvider routes={routes}>
+					{/* {Routes} */}
+					<CreateRoutes />
+				</AccessProvider>
+			</GlobalProvider>
 		</ConfigProvider>
 	)
 }

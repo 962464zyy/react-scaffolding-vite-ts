@@ -1,45 +1,23 @@
-import {
-	AppstoreOutlined,
-	BarChartOutlined,
-	CloudOutlined,
-	MenuFoldOutlined,
-	MenuUnfoldOutlined,
-	ShopOutlined,
-	TeamOutlined,
-	UploadOutlined,
-	UserOutlined,
-	VideoCameraOutlined
-} from '@ant-design/icons'
 import { Layout, Menu, MenuProps } from 'antd'
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import React, { useState } from 'react'
 
 import { Outlet } from 'react-router-dom'
+import SiderMenu from '../SiderMenu'
+import Test from '../../../../components/Test'
 import styles from './index.module.less'
 
 export interface LayoutProps {}
 
 const { Header, Content, Footer, Sider } = Layout
 
-const items: MenuProps['items'] = [
-	UserOutlined,
-	VideoCameraOutlined,
-	UploadOutlined,
-	BarChartOutlined,
-	CloudOutlined,
-	AppstoreOutlined,
-	TeamOutlined,
-	ShopOutlined
-].map((icon, index) => ({
-	key: String(index + 1),
-	icon: React.createElement(icon),
-	label: `nav ${index + 1}`
-}))
 const BasicLayout = (props: LayoutProps) => {
+	console.log(props)
 	const [collapsed, setCollapsed] = useState(false)
 	return (
 		<div className={styles.container}>
 			{/* hasSizder 表示子元素里有Sider，一般不用指定，可用于服务端渲染时避免样式闪动 */}
-			<Layout hasSider className={styles.layout}>
+			<Layout hasSider className={styles.layout} style={{ backgroundColor: 'red' }}>
 				<Header
 					style={{
 						height: 56,
@@ -70,18 +48,18 @@ const BasicLayout = (props: LayoutProps) => {
 							backgroundColor: 'powderblue'
 						}}
 					>
-						left sidebar
+						<SiderMenu />
 					</Sider>
 					<Content
 						style={{
 							position: 'relative',
-							// right: 0,
 							width: '100%',
 							height: '100%',
 							backgroundColor: 'red'
 						}}
 					>
 						main content
+						<Test />
 					</Content>
 					{/* <Sider>right sidebar</Sider> */}
 				</Layout>

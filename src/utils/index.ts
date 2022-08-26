@@ -91,3 +91,10 @@ export const isUrl = (url: string | undefined) => {
 		}
 	}
 }
+
+/** 是否是浏览器 */
+export const isBrowser = !!(
+	typeof window !== 'undefined' &&
+	window.document &&
+	window.document.createElement
+)
