@@ -34,7 +34,7 @@ export const renderRoutes = (props: CreateRoutesPropsType) => {
 	)
 }
 
-/** 根据处理过的路由表创建数组 */
+/** 根据处理过的路由表创建路由 */
 const CreateRoutes = (props: CreateRoutesPropsType) => renderRoutes(props)
 
 export default CreateRoutes
