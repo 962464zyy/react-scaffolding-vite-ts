@@ -7,12 +7,14 @@ import SiderMenu from '../SiderMenu'
 import Test from '../../../../components/Test'
 import styles from './index.module.less'
 
-export interface LayoutProps {}
+export interface LayoutProps {
+	routes?: any
+}
 
 const { Header, Content, Footer, Sider } = Layout
 
 const BasicLayout = (props: LayoutProps) => {
-	console.log(props)
+	console.log('BasicLayout', props)
 	const [collapsed, setCollapsed] = useState(false)
 	return (
 		<div className={styles.container}>
@@ -58,8 +60,8 @@ const BasicLayout = (props: LayoutProps) => {
 							backgroundColor: 'red'
 						}}
 					>
-						main content
-						<Test />
+						{/* <Test /> */}
+						<Outlet />
 					</Content>
 					{/* <Sider>right sidebar</Sider> */}
 				</Layout>
@@ -74,7 +76,6 @@ const BasicLayout = (props: LayoutProps) => {
 					footer
 				</Footer> */}
 			</Layout>
-			<Outlet />
 		</div>
 	)
 }

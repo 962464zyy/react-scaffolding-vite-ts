@@ -14,14 +14,30 @@ export interface IGetRouteElementType {
 export const getRouteElement = ({ route, index }: IGetRouteElementType) => {
 	const routeProps = {
 		...route,
-		index
+		element: {
+			...route.element,
+			props: route
+		}
 	}
-	return <Route {...routeProps} key={index} />
+
+	return (
+		<Route {...routeProps} key={index}>
+			{route.children
+				? route.children.map(
+						(route: any, index: number) =>
+							getRouteElement({
+								route,
+								index
+							})
+						// eslint-disable-next-line no-mixed-spaces-and-tabs
+				  )
+				: null}
+		</Route>
+	)
 }
 
 /** 渲染路由 */
 export const renderRoutes = (props: CreateRoutesPropsType) => {
-	console.log(props)
 	return (
 		<Routes>
 			{props?.routes?.map((route, index) =>
