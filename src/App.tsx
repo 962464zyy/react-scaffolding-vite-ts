@@ -1,4 +1,4 @@
-import 'antd/dist/antd.css'
+import 'antd/dist/reset.css'
 
 import { Outlet, Route, useRoutes } from 'react-router-dom'
 import { Suspense, useLayoutEffect } from 'react'
@@ -12,6 +12,7 @@ import ProEmpty from './components/ProEmpty'
 import { getEnv } from './utils'
 import routes from './routes'
 import zh_CN from 'antd/lib/locale/zh_CN'
+import RouterView from './core/Router/RouterView'
 
 const App = () => {
 	/** 获取当前环境，禁止consoled的打印 */
@@ -39,12 +40,13 @@ const App = () => {
 			// 自定义组件空状态
 			renderEmpty={() => <ProEmpty size="large" />}
 		>
-			<GlobalProvider routes={routes}>
-				<AccessProvider routes={routes}>
-					{/* {Routes} */}
-					<CreateRoutes />
-				</AccessProvider>
-			</GlobalProvider>
+			<RouterView />
+			{/* <GlobalProvider routes={routes}> */}
+			{/* <AccessProvider routes={routes}> */}
+			{/* {Routes} */}
+			{/* <CreateRoutes /> */}
+			{/* </AccessProvider> */}
+			{/* </GlobalProvider> */}
 		</ConfigProvider>
 	)
 }
