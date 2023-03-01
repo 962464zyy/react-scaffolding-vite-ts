@@ -1,21 +1,8 @@
-import { ComponentType, lazy, LazyExoticComponent, ReactNode, Suspense } from 'react'
+import { lazy, LazyExoticComponent, ReactNode, Suspense } from 'react'
 
 import { CustomRouteObject } from './type'
 import { RouteObject } from 'react-router-dom'
-import {
-	AppstoreOutlined,
-	CalendarOutlined,
-	LinkOutlined,
-	MailOutlined,
-	SettingOutlined
-} from '@ant-design/icons'
-
-// import Test from '../components/Test'
-// import BasicLayout from '../layout/components/BasicLayout'
-
-// const lazyLoad = (src: () => Promise<{ default: ComponentType<any> }>) => {
-// 	return lazy(src)
-// }
+import { AppstoreOutlined } from '@ant-design/icons'
 
 export const lazyLoad = (Com: LazyExoticComponent<any>): ReactNode => {
 	return (
@@ -34,18 +21,40 @@ const routes: CustomRouteObject[] = [
 		element: lazyLoad(lazy(() => import('../core/Layout'))),
 		name: 'BasicLayout',
 		children: [
+			// {
+			// 	index: true,
+			// 	element: <Navigate to={'/test1/test11'} />
+			// },
 			{
-				// index: true,
-				path: 'test',
-				name: '测试',
+				path: 'test1',
+				name: '测试1',
 				icon: <AppstoreOutlined />,
-				element: <Test />
+				// element: <Test />,
+				children: [
+					{
+						path: 'test11',
+						name: 'test11',
+						// element: <div>test11</div>
+						element: <Test />
+					},
+					{
+						path: 'test12',
+						name: 'test12',
+						element: <div>test12</div>
+					}
+				]
 			},
 			{
-				path: 'courses',
-				name: '课程',
+				path: 'test2',
+				name: '测试2',
 				icon: <AppstoreOutlined />,
-				element: <div>courses</div>
+				element: <div>测试2</div>
+			},
+			{
+				path: 'test3',
+				name: '测试3',
+				icon: <AppstoreOutlined />,
+				element: <div>测试3</div>
 			}
 		]
 	},

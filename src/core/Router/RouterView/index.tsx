@@ -26,6 +26,7 @@ const RouterView: FC<any> = () => {
 			routes.find(route => route.path === '/*' || route.path === '/')?.children || []
 		/** 获取菜单需要显示的items */
 		const o = getItems(layoutRoutes)
+		console.log(o)
 		setRouteState(o)
 	}, [routes, routeAccess])
 	return (

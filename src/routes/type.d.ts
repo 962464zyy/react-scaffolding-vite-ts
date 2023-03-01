@@ -25,7 +25,7 @@ export interface MenuDataItem extends RouteObject {
 	/** 点击菜单 路径，可以设定为网页链接 */
 	onClick?: () => void
 	/** 路径 */
-	path: string
+	path?: string
 	/** 指定外链打开形式，同a标签 */
 	target?: string
 	/** 路由鉴权 是否需要登录 */

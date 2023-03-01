@@ -1,4 +1,3 @@
-import React from 'react'
 import { Navigate, useLocation } from 'react-router'
 import routes from '../../../routes'
 import { useGlobal } from '../../context/global'
@@ -18,7 +17,7 @@ const BeforeRouter = (props: BeforeRouterProps) => {
 	const { access } = route
 
 	// 判断是否有权限
-	if (!access && routeAccess?.[access] === false) {
+	if (!access && routeAccess?.[access as unknown as string] === false) {
 		return <Navigate to="/403" replace />
 	}
 

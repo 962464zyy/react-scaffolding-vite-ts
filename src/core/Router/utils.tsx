@@ -34,6 +34,18 @@ export const deepFilterItems = (args: DeepFilterRouteArgs) => {
 
 	const o = addItem({ route, currentPath })
 	leftItems.push(cloneDeep(o))
+
+	const lastLeftItem = leftItems?.at(-1)
+	const nextLeftItems = lastLeftItem?.children
+	children?.forEach((child: any) => {
+		const args: DeepFilterRouteArgs = {
+			route: child,
+			parentPath: currentPath,
+			leftItems: nextLeftItems
+			// routeAccess
+		}
+		deepFilterItems(args)
+	})
 }
 
 /** 获取菜单配置项 */
