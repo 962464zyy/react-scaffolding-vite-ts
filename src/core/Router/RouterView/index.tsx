@@ -11,6 +11,7 @@ const initState = {
 	routeAccess: {}
 }
 
+/** 路由 */
 const RouterView: FC<any> = () => {
 	const {
 		globalState: { routeAccess }
@@ -29,6 +30,7 @@ const RouterView: FC<any> = () => {
 		console.log(o)
 		setRouteState(o)
 	}, [routes, routeAccess])
+
 	return (
 		<Provider value={routeState}>
 			<Routes>

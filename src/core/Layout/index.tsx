@@ -1,15 +1,14 @@
 import { Layout } from 'antd'
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
-import { Outlet, useRoutes } from 'react-router-dom'
+import { useRoutes } from 'react-router-dom'
 import styles from './index.module.less'
 import routes from '../../routes'
 import LeftSiderMenuPro from './components/LeftSiderMenuPro'
 import HeaderPro from './components/HeaderPro'
 import withRouter from '../Router/withRouter'
 
-const { Header, Content, Footer, Sider } = Layout
+const { Content } = Layout
 
 const BasicLayout = withRouter(props => {
 	const { location } = props

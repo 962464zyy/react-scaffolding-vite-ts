@@ -1,5 +1,6 @@
 import { createContext, useContext } from 'react'
 
+// 初始化状态值
 export interface InitialStateType {
 	userInfo?: Record<string, any>
 	accessInfo?: string[]

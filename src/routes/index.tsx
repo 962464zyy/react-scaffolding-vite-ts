@@ -13,7 +13,8 @@ export const lazyLoad = (Com: LazyExoticComponent<any>): ReactNode => {
 }
 
 // const BasicLayout = lazyLoad(() => import('../pro/layout/components/BasicLayout'))
-const Test = lazy(() => import('../components/Test'))
+const Test = lazy(() => import('@/components/Test'))
+const Login = lazy(() => import('@/pages/Login'))
 
 const routes: CustomRouteObject[] = [
 	{
@@ -21,20 +22,14 @@ const routes: CustomRouteObject[] = [
 		element: lazyLoad(lazy(() => import('../core/Layout'))),
 		name: 'BasicLayout',
 		children: [
-			// {
-			// 	index: true,
-			// 	element: <Navigate to={'/test1/test11'} />
-			// },
 			{
 				path: 'test1',
 				name: '测试1',
 				icon: <AppstoreOutlined />,
-				// element: <Test />,
 				children: [
 					{
 						path: 'test11',
 						name: 'test11',
-						// element: <div>test11</div>
 						element: <Test />
 					},
 					{
@@ -54,9 +49,16 @@ const routes: CustomRouteObject[] = [
 				path: 'test3',
 				name: '测试3',
 				icon: <AppstoreOutlined />,
-				element: <div>测试3</div>
+				element: <div>测试3</div>,
+				access: false
 			}
 		]
+	},
+	{
+		path: 'login',
+		name: 'login',
+		icon: <AppstoreOutlined />,
+		element: <Login />
 	},
 	{
 		path: '/403',
